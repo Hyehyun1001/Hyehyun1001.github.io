@@ -68,17 +68,17 @@ ul{margin:6px 0 0;padding-left:20px}li{margin:2px 0}
       <a href="https://github.com/Hyehyun1001/ai-interview-platform">GitHub</a></div>
     <dl class="facts">
       <dt>기간</dt><dd>2026.10 ~ 2026.11</dd>
-      <dt>역할</dt><dd>전 영역 참여 및 PRD, TRD, 화면정의서 문서 제작</dd>
-      <dt>핵심 기술</dt><dd>FastAPI · Ollama · STT/TTS · OCR · React</dd>
+      <dt>역할</dt><dd>1인 개발 · 기획부터 설계·구현까지 전 영역 담당 및 PRD, TRD, 화면정의서 문서 제작</dd>
+      <dt>핵심 기술</dt><dd>FastAPI · Next.js · Ollama · Faster-Whisper · PostgreSQL</dd>
     </dl>
-    <p><b>목표</b> 외부 API 없이 오픈소스 LLM(Ollama)으로 질문 생성·평가를 수행하고, 모든 음성·영상·이력서 데이터를 기업 내부망에서만 처리하는 면접 플랫폼.</p>
+    <p><b>목표</b> 외부 API 없이 오픈소스 LLM(Ollama)·STT·TTS를 Mac 한 대에서 구동해, 모든 음성·영상·이력서 데이터가 외부로 나가지 않는 온프레미스 면접 플랫폼.</p>
     <div class="grid">
-      <div><b>실시간 음성 면접</b>TTS 질문 출력 · STT 답변 변환 · 타이머 · 시선 이탈 경고 · 코딩테스트 탭</div>
-      <div><b>LLM 질문 · 환각 방지</b>답변 모호/이력서 모순 시 꼬리질문 · 키워드 근거(Grounding) 질문 · Pydantic JSON 강제</div>
-      <div><b>이력서 처리</b>PDF OCR 추출 → 확인·수정 → HR용 표준 템플릿 변환</div>
+      <div><b>실시간 음성 면접</b>2채널 WebSocket(control/media) · 증분 STT · TTS 질문 · 시선 이탈 감지 · 코딩테스트(Docker 샌드박스 채점)</div>
+      <div><b>LLM 질문 · 환각 방지</b>Pydantic 파서 + Guardrail 검증, 실패 시 재시도 후 기본 질문 대체 · 꼬리질문은 이력서 근거(evidence) 인용 필수</div>
+      <div><b>이력서 처리</b>PDF 텍스트 추출(PyMuPDF) → 확인·수정 → ChromaDB 색인 · 원본 PDF는 추출 즉시 삭제</div>
       <div><b>평가 리포트</b>5개 항목 점수 · 강점/개선점 우선순위 · 시선 분석</div>
-      <div><b>HR 관리자</b>질문·가중치 설정 · 지원자 레이더 차트 비교 · 음성 하이라이트 플레이어</div>
-      <div><b>공통 백엔드</b>역할 분리 로그인 · Google OAuth 2.0 · 세션 인증</div>
+      <div><b>HR 관리자</b>공고 작성 마법사·AI 질문 뱅크 · 지원자 비교(Compare) · 음성 하이라이트 플레이어 · 합불 메일 발송</div>
+      <div><b>공통 백엔드</b>JWT 인증 · 지원자/담당자 역할 분리 · 기업별(company_id) 데이터 격리 · 감사 로그</div>
     </div>
   </div>
 
@@ -140,7 +140,7 @@ ul{margin:6px 0 0;padding-left:20px}li{margin:2px 0}
   <h2>보유 기술</h2>
   <dl class="skills">
     <dt>AI / ML</dt><dd>Python, scikit-learn, PyTorch, imbalanced-learn, Hyperopt, Optuna, SHAP</dd>
-    <dt>LLM · 음성 · 문서</dt><dd>Ollama(LLM), STT/TTS, OCR, Pydantic 스키마 검증, 근거(Grounding) 기반 질문 생성</dd>
+    <dt>LLM · 음성 · 문서</dt><dd>Ollama(LLM), Faster-Whisper(STT), TTS, 이력서 RAG(ChromaDB·bge-m3), Pydantic 스키마 검증, Guardrail, 근거(Grounding) 기반 질문 생성</dd>
     <dt>Backend</dt><dd>FastAPI, Uvicorn, SQLAlchemy, PostgreSQL, Argon2 해싱, 세션 인증, REST API, WebSocket(STOMP), MSA·API Gateway 연동, Swagger(OpenAPI)</dd>
     <dt>Frontend</dt><dd>React, TypeScript, JavaScript, HTML/CSS, Konva.js, Yjs(CRDT), Axios / Fetch API</dd>
     <dt>Infra · 협업</dt><dd>Docker, GitHub Actions(CI/CD), Anaconda / Virtualenv, GitHub(브랜치 전략 기반 협업)</dd>
@@ -175,12 +175,12 @@ ul{margin:6px 0 0;padding-left:20px}li{margin:2px 0}
 
   <h3>지원동기</h3>
   <p>모델의 정확도가 아무리 높아도 사용자가 쓰는 서비스에 안정적으로 녹아들지 못하면 가치가 되지 못한다고 생각합니다. 그래서 모델을 만드는 데서 멈추지 않고 서비스에 접목해 실제 문제를 해결하는 AI 응용 엔지니어를 목표로 삼았습니다.</p>
-  <p>이 목표를 위해 메가스터디 AI 캠퍼스에서 데이터 분석, 머신러닝·딥러닝, LLM과 음성 처리, FastAPI 기반 서비스 개발을 배웠습니다. 이어서 5인 팀으로 STT/TTS, OCR, 오픈소스 LLM(Ollama)을 하나의 흐름으로 연결한 AI 면접 플랫폼을 만들었고, 문제 유형이 서로 다른 4개 데이터셋으로 분류·군집·회귀 파이프라인을 설계해 모델링부터 튜닝, SHAP 해석까지 직접 수행했습니다. 여기에 프론트엔드와 실시간 시스템을 다룬 논문·키오스크 프로젝트 경험이 더해져, AI 기능이 실제 화면과 서버 위에서 어떻게 동작해야 하는지 함께 고민할 수 있게 되었습니다.</p>
+  <p>이 목표를 위해 메가스터디 AI 캠퍼스에서 데이터 분석, 머신러닝·딥러닝, LLM과 음성 처리, FastAPI 기반 서비스 개발을 배웠습니다. 이어서 STT/TTS, 이력서 RAG, 오픈소스 LLM(Ollama)을 하나의 흐름으로 연결한 AI 면접 플랫폼을 혼자 기획하고 개발했고, 5인 팀에서 문제 유형이 서로 다른 4개 데이터셋으로 분류·군집·회귀 파이프라인을 설계해 모델링부터 튜닝, SHAP 해석까지 직접 수행했습니다. 여기에 프론트엔드와 실시간 시스템을 다룬 논문·키오스크 프로젝트 경험이 더해져, AI 기능이 실제 화면과 서버 위에서 어떻게 동작해야 하는지 함께 고민할 수 있게 되었습니다.</p>
   <p>AI의 가능성과 서비스의 현실 사이를 연결하는 일을 이어가고 싶어 지원합니다.</p>
 
   <h3>기술 수행 경험 및 문제 해결 경험</h3>
-  <p><b>AI 면접 플랫폼 (2026년 10월 ~ 11월)</b><br>지원자가 AI 면접관과 음성으로 면접을 보고, HR 담당자가 질문과 평가 기준을 설정해 지원자를 비교하는 서비스입니다. 모든 음성·영상·이력서 데이터를 기업 내부망에서만 처리해야 한다는 조건이 있어 외부 API 대신 Ollama 기반 LLM을 사용했고, 기능 전반에 참여했습니다.</p>
-  <p>가장 어려웠던 점은 LLM의 출력이 일정하지 않다는 것이었습니다. 지원자 답변과 무관한 질문이 나오거나 응답 형식이 깨지면 면접 흐름이 끊기기 때문입니다. 이를 프롬프트 수정만으로 풀지 않고, STT로 변환된 답변의 키워드를 근거로 질문을 생성하도록 제한하고, Pydantic JSON 스키마로 출력 형식을 강제했습니다. 또 답변이 모호하거나 이력서 내용과 어긋날 때만 꼬리질문을 하되 횟수를 제한해 면접이 길어지지 않도록 했습니다. 이 경험으로 LLM을 서비스에 쓰려면 프롬프트뿐 아니라 입력 근거, 출력 검증, 실패 처리까지 설계해야 한다는 점을 배웠습니다.</p>
+  <p><b>AI 면접 플랫폼 (2026년 10월 ~ 11월)</b><br>지원자가 AI 면접관과 음성으로 면접을 보고, HR 담당자가 질문과 평가 기준을 설정해 지원자를 비교하는 서비스입니다. 기획과 설계, 백엔드·프론트엔드 구현을 혼자 맡았습니다. 모든 음성·영상·이력서 데이터가 외부로 나가지 않아야 한다는 조건 때문에 외부 API 대신 Ollama 기반 LLM과 Faster-Whisper를 Mac 한 대에서 구동했고, 16GB 메모리 안에서 동작하도록 동시 면접 수를 제한했습니다.</p>
+  <p>가장 어려웠던 점은 LLM의 출력이 일정하지 않다는 것이었습니다. 지원자 답변과 무관한 질문이 나오거나 응답 형식이 깨지면 면접 흐름이 끊기기 때문입니다. 이를 프롬프트 수정만으로 풀지 않고, STT로 변환된 답변의 키워드를 근거로 질문을 생성하도록 제한하고, Pydantic 파서와 Guardrail로 모든 출력을 검증했습니다. 검증에 실패하면 재시도하고, 그래도 실패하면 꼬리질문을 생략하고 기본 질문으로 대체해 면접이 끊기지 않게 했습니다. 꼬리질문은 이력서 RAG에서 찾은 근거를 인용해야 통과하도록 했습니다. 이 경험으로 LLM을 서비스에 쓰려면 프롬프트뿐 아니라 입력 근거, 출력 검증, 실패 처리까지 설계해야 한다는 점을 배웠습니다.</p>
   <p><b>머신러닝 분석 프로젝트 (2026년 8월 ~ 9월)</b><br>은행 고객 불만족 예측, 신용카드 이상 거래 탐지, 리뷰 군집, 중고거래 가격 예측의 네 과제를 맡았습니다. 특히 사기 거래가 전체의 0.17%인 데이터에서는 Accuracy가 높아도 사기를 거의 잡지 못하는 문제가 있었습니다. 평가 기준을 PR-AUC와 F1 중심으로 바꾸고 SMOTE, ADASYN, 언더샘플링을 비교해 Recall을 개선했습니다. 문제의 구조에 맞는 지표와 전처리를 먼저 고르는 것이 모델 선택보다 중요하다는 것을 체감했습니다.</p>
 
   <h3>협업 경험</h3>
