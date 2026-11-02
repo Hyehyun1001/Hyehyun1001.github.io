@@ -11,9 +11,9 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
 main{max-width:860px;margin:0 auto;padding:56px 24px 96px}
-header{display:flex;gap:32px;align-items:center;justify-content:center;text-align:left}
+header{display:flex;gap:32px;align-items:center;justify-content:space-between}
 .photo{width:128px;height:165px;object-fit:cover;border-radius:10px;flex-shrink:0}
-@media(max-width:560px){header{flex-direction:column;align-items:center;text-align:center}.contact{justify-content:center}}
+@media(max-width:560px){header{flex-direction:column-reverse;align-items:flex-start}}
 h1{font-size:2.2rem;margin:0}
 .role{font-size:1.2rem;color:var(--accent);font-weight:600;margin:4px 0 12px}
 .tagline{color:var(--sub);margin:0 0 16px}
@@ -46,7 +46,6 @@ ul{margin:6px 0 0;padding-left:20px}li{margin:2px 0}
 <main>
 
 <header>
-  <img class="photo" src="photo.jpg" alt="이혜현 증명사진">
   <div>
     <h1>이혜현</h1>
     <div class="role">AI 응용 엔지니어</div>
@@ -56,6 +55,7 @@ ul{margin:6px 0 0;padding-left:20px}li{margin:2px 0}
       <a href="https://github.com/Hyehyun1001">github.com/Hyehyun1001</a>
     </div>
   </div>
+  <img class="photo" src="photo.jpg" alt="이혜현 증명사진">
 </header>
 
 <section>
